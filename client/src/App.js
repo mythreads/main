@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import GoogleAuth from "./components/GoogleAuth";
 import "./App.css";
+
 class App extends Component {
   state = {
     cow: "",
@@ -41,6 +43,7 @@ class App extends Component {
           />
           <button type="submit">Show me a talking cow!</button>
         </form>
+        <GoogleAuth />
       </div>
     );
   }

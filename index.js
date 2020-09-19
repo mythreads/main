@@ -6,6 +6,12 @@ const path = require("path");
 // Create the server
 const app = express();
 
+const { Pool } = require("pg");
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.DATABASE_URL ? true : false,
+});
+
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, "client/build")));
 
@@ -27,6 +33,20 @@ app.get("/api/cow/", cors(), async (req, res, next) => {
     res.json({ moo });
   } catch (err) {
     next(err);
+  }
+});
+
+app.get("/db", async (req, res) => {
+  console.log(process.env.DATABASE_URL);
+  try {
+    const client = await pool.connect();
+    const result = await client.query("SELECT * FROM test_table");
+    const results = { results: result ? result.rows : null };
+    res.render("pages/db", results);
+    client.release();
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
   }
 });
 

@@ -1,0 +1,21 @@
+{
+  "name": "mythreads",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mythreads/main/issues"
+  },
+  "homepage": "https://github.com/mythreads/main#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cowsay": "^1.4.0",
+    "express": "^4.17.1"
+  }
+}
